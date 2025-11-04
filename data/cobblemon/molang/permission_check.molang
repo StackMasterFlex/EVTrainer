@@ -1,0 +1,13 @@
+'Checks player permissions';
+
+t.perms = q.player.has_permission('cobblemon.premium');
+
+t.perms == 0 ? {
+    return 'FALSE';
+};
+
+t.perms == 1 ? {
+    return 'TRUE';
+};
+
+return 'UNKNOWN';

@@ -1,0 +1,110 @@
+{
+    "initializationAction": [
+        "(q.npc.is_in_battle_with(q.player) || !q.npc.is_doing_activity('minecraft:idle', 'cobblemon:battling')) ? q.dialogue.close();",
+        "q.npc.play_animation('wave', q.player.uuid);"
+    ],
+    "speakers": {
+        "npc": {
+            "name": {
+                "type": "expression",
+                "expression": "q.npc.name"
+            },
+            "face": "q.npc.face();"
+        },
+        "player": {
+            "face": "q.player.face();",
+            "name": {
+                "type": "expression",
+                "expression": "q.player.username"
+            }
+        }
+    },
+    "pages": [
+        {
+            "id": "ev_selection1",
+            "speaker": "npc",
+            "lines": ["Hello there! I specialize in training Pokémon to maximize their Effort Values (EVs). Which EV-focused battle would you like to take on today?"],
+            "input": {
+                "type": "option",
+                "vertical": true,
+                "options": [
+                    {
+                        "text": "§c💖HP💖§r",
+                        "value": "health",
+                        "action": [
+                            "q.player.data.evstat = 'HP'; q.player.save_data();",
+                            "q.dialogue.close();",
+                            "v.battle = q.npc.start_battle(q.player);"
+                        ]
+                    },
+                    {
+                        "text": "§c⚔ATK⚔§r",
+                        "value": "attack",
+                        "action": [
+                            "q.player.data.evstat = 'ATK'; q.player.save_data();",
+                            "q.dialogue.close();",
+                            "v.battle = q.npc.start_battle(q.player);"
+                        ]
+                    },
+                    {
+                        "text": "§c🛡DEF🛡§r",
+                        "value": "defence",
+                        "action": [
+                            "q.player.data.evstat = 'DEF'; q.player.save_data();",
+                            "q.dialogue.close();",
+                            "v.battle = q.npc.start_battle(q.player);"
+                        ]
+                    },
+                    {
+                        "text": "§c->§r",
+                        "value": "next",
+                        "action": "q.dialogue.set_page('ev_selection2');"
+                    }
+                ]
+            }
+        },
+                {
+            "id": "ev_selection2",
+            "speaker": "npc",
+            "lines": ["Hello there! I specialize in training Pokémon to maximize their Effort Values (EVs). Which EV-focused battle would you like to take on today?"],
+            "input": {
+                "type": "option",
+                "vertical": true,
+                "options": [
+                    {
+                        "text": "§c⭐SPATK⭐§r",
+                        "value": "spattack",
+                        "action": [
+                            "q.player.data.evstat = 'SPATK'; q.player.save_data();",
+                            "q.dialogue.close();",
+                            "v.battle = q.npc.start_battle(q.player);"
+                        ]
+                    },
+                    {
+                        "text": "§c💮SP.DEF💮§r",
+                        "value": "spdefence",
+                        "action": [
+                            "q.player.data.evstat = 'SPDEF'; q.player.save_data();",
+                            "q.dialogue.close();",
+                            "v.battle = q.npc.start_battle(q.player);"
+                        ]
+                    },
+                    {
+                        "text": "§c💨SPEED💨§r",
+                        "value": "speed",
+                        "action": [
+                            "q.player.data.evstat = 'SPEED'; q.player.save_data();",
+                            "q.dialogue.close();",
+                            "v.battle = q.npc.start_battle(q.player);"
+                        ]
+                    },
+                    {
+                        "text": "§c<-§r",
+                        "value": "back",
+                        "action": "q.dialogue.set_page('ev_selection1');"
+                    }
+                ]
+            }
+        }
+    ]
+}

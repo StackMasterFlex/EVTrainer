@@ -1,0 +1,43 @@
+{
+  "resourceIdentifier": "cobblemon:global_skins",
+  "names": [
+    "§lEV Trainer§r"
+  ],
+  "hitbox": "player",
+  "canDespawn": false,
+  "isMovable": false,
+  "isInvulnerable": true,
+  "isLeashable": false,
+  "allowProjectileHits": false,
+  "battleConfiguration": {
+    "canChallenge": true
+  },
+  "autoHealParty": true,
+  "ai": [
+    {
+      "type": "apply_behaviours",
+      "behaviours": [
+        "cobblemon:looking",
+        "cobblemon:looks_in_one_direction",
+        "cobblemon:battle_scripts",
+        "cobblemon:resource_texture"
+      ]
+    },
+    {
+      "type": "set_variables",
+      "variableValues": {
+        "on_player_wins": ""
+      }
+    }
+  ],
+  "interaction": {
+    "type": "dialogue",
+    "dialogue": "cobblemon:ev_trainer_interaction"
+  },
+  "skill": 1,
+  "party": {
+    "type": "script",
+    "script": "cobblemon:ev_trainer_team",
+    "isStatic": false
+  }
+}
